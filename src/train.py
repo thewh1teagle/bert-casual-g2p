@@ -13,11 +13,6 @@ def main():
     set_random_seeds(config.seed)
     log_config(config)
 
-    if config.wandb_mode:
-        os.environ["WANDB_MODE"] = config.wandb_mode
-        if config.wandb_project:
-            os.environ["WANDB_PROJECT"] = config.wandb_project
-
     train_df = load_tsv_data(config.data_file)
     eval_df = load_tsv_data(config.eval_file) if config.eval_file else None
 

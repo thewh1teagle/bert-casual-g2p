@@ -1,4 +1,5 @@
 import argparse
+import os
 import random
 import numpy as np
 import torch
@@ -41,7 +42,15 @@ def get_config():
     parser.add_argument("--wandb_mode", type=str, default="online")
     parser.add_argument("--wandb_project", type=str, default="dictabert-g2p")
 
-    return parser.parse_args()
+    args = parser.parse_args()
+    
+    # Set wandb environment variables
+    if args.wandb_mode:
+        os.environ["WANDB_MODE"] = args.wandb_mode
+        if args.wandb_project:
+            os.environ["WANDB_PROJECT"] = args.wandb_project
+    
+    return args
 
 
 def set_random_seeds(seed: int):
