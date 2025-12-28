@@ -1,0 +1,11 @@
+.venv/
+__pycache__/
+venv/
+*.tsv
+*.7z
+*.txt
+*.tsv
+wandb/
+checkpoints/
+.DS_Store
+.cache/
